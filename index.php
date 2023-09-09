@@ -1,83 +1,87 @@
 <?php
-    include('../includes/connect.php');
-    include('../functions/common_function.php');
+    include('includes/connect.php');
+    include('functions/common_function.php');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nav</title>
-    <link rel='stylesheet' type='text/css' href='styles.css'>
+    <title>home</title>
+    <link rel='stylesheet' type='text/css' href='style.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 <header>
         <a href="index.php" class="logos"><img src="logo.png" width="70px"></a>
-        
+        <form class="d-flex" action="search_product.php" method="get">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
+            <input type="submit" value="Search" class="btn btn-outline-light" name="search_data_product">
+        </form>
+        <input type="checkbox" id="menu-bar">
+        <label for="menu-bar"><img src="menu.png" width="30px" height="30px"></label>
+
         <nav class="navbar" navbar-expand-lg>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <li><a href="">Welcome</a></li>
-                    <li><a href="admin_login.html">lasta</a></li>
+            <ul>
+                <li><a>Categories</a>
+                <ul>
+                <?php
+                    getcategories();
+                    // $select_categories="Select * from categories";
+                    // $result_categories=mysqli_query($con, $select_categories);
+                    // // $row_data=mysqli_fetch_assoc($result_categories);
+                    // // echo $row_data['category_title'];
+                    // // echo $row_data['category_title'];
+                    // while($row_data=mysqli_fetch_assoc($result_categories)){
+                    //     $category_title=$row_data['category_title'];
+                    //     $category_id=$row_data['category_id'];
+                        
+                    //     echo "<li><a href='index.php?category=$category_id'>$category_title</a></li>";
+                        
+                    // }
+                ?>
+                </ul>
+                    <!-- <ul>
+                        <li><a href="earring.php">Earrings</a></li>
+                        <li><a href="ring.php">Rings</a></li>
+                        <li><a href="braclet.php">Braclet</a></li>
+                        <li><a href="brouch.php">Brouch</a></li>
+                        <li><a href="sliver.php">Sliver Keyring</a></li>
+                        <li><a href="anklet.php">Anklet</a></li>
+                    </ul> -->
                 </li>
+                <li class="nav-item"><a href="users_area/user_login.html">Login</a></li>
+                <li><a href="cart.php"><img src="cart.png" width="30px" height="30px"><sup><?php cart_item(); ?></sup></a></li>
+                <!-- <li><a href="#">Total: <?php total_cart_price(); ?></a></li> -->
+                
             </ul>
             
         </nav>       
     </header>
-    <div class="row">
-        <div class="col-md-2">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                <a href="index.php?insert_product" class="nav-link text-dark my-1">Insert Products</a></button>
-                <a href="index.php?view_products" class="nav-link text-dark my-1">View Products</a></button>
-                <a href="index.php?insert_category" class="nav-link text-dark my-1">Insert Categories</a></button>
-                <a href="index.php?view_category" class="nav-link text-dark my-1">View Categories</a></button>
-                <a href="" class="nav-link text-dark my-1">All Orders</a></button>
-                <a href="" class="nav-link text-dark my-1">All Payments</a></button>
-                <a href="" class="nav-link text-dark my-1">List Users</a></button>
-                </li> 
-            </ul>
-        </div>
-        <div class="col-md-9">
-            <div class="container my-3">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+            <h2>sdfgthyjui</h2>
+            <h2>sdfgh</h2>
+                <h1><center>Horror</center></h1>
                 <?php
-                    if(isset($_GET['insert_category'])){
-                        include('insert_categories.php');
-                    }
-
-                    if(isset($_GET['insert_product'])){
-                        include('insert_product.php');
-                    }
-
-                    if(isset($_GET['view_products'])){
-                        include('view_products.php');
-                    }
-
-                    if(isset($_GET['edit_products'])){
-                        include('edit_products.php');
-                    }
-
-                    if(isset($_GET['delete_products'])){
-                        include('delete_products.php');
-                    }
-
-                    if(isset($_GET['view_category'])){
-                        include('view_category.php');
-                    }
-
-                    if(isset($_GET['delete_category'])){
-                        include('delete_category.php');
-                    }
+                    getproducts();
+                    get_unique_categories();
+                    cart();
+                    // $ip = getIPAddress();  
+                    // echo 'User Real IP Address - '.$ip;  
                 ?>
             </div>
         </div>
+        <?php include("./includes/footer.php") ?>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
+
 <style>
     *{
     margin: 0;
@@ -91,12 +95,6 @@ body{
     min-height: 100vh;
     background-size: cover;
     background-position: center;
-    padding-top: 105px;
-    overflow-x:hidden;
-}
-.product_img{
-    width: 100px;
-    object-fit: contain;
 }
 header{
     position: fixed;
@@ -115,6 +113,12 @@ header .logos{
     font-weight: bolder;
     font-size: 25px;
     color: #333;
+}
+header .search{
+    display: block;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 18px;
 }
 header .navbar ul{
     display: inline-block;
@@ -137,15 +141,57 @@ header .navbar ul li a:hover{
 header .navbar ul li a:hover img{
     transform: scale(1.2);
 }
+header .navbar ul li ul{
+    position: absolute;
+    left: 0;
+    width: 150px;
+    background: #cf9393;
+    display: none;
+}
+header .navbar ul li:Focus-within > ul,
+header .navbar ul li:hover > ul{
+    display: initial;
+}
+#menu-bar{
+    display: none;
+}
 header label{
     font-size: 20px;
     color: #333;
     cursor: pointer;
     display: none;
 }
-/* body .row ul{
-    background: #cf9393;
-    height: 100%;
-} */
+
+
+@media(max-width:991px){
+    header{
+        padding: 20px;
+    }
+    header label{
+        display: initial;
+    }
+    header .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #cf9393;
+        border-top: 1px solid #000;
+        display: none;
+    }
+    header .navbar ul li{
+        width: 100%;
+    }
+    header .navbar ul li ul{
+        position: relative;
+        width: 100%;
+    }
+    header .navbar ul li ul li{
+        background: #caa0a0;
+    }
+    #menu-bar:checked ~ .navbar{
+        display: initial;
+    }
+}
 </style>
 </html>

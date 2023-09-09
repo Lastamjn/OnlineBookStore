@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title>Login</title>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+  </head>
+  <body>
+    <div class="register">
+      <img src="logo.png" class="logo">
+      <h1>Sign Up</h1>
+      <form method="post" action="register.php">
+        <p>Full Name</p>
+        <input type="text" name="name" placeholder="Enter Your Full Name">
+        <p>Address</p>
+        <input type="text" name="address" placeholder="Enter Your Address">
+        <p>Email</p>
+        <input type="text" name="email" placeholder="Enter Your Email">
+        <p>Phone Number</p>
+        <input type="text" name="number" placeholder="Enter Your Number">
+        <p>Password</p>
+        <input type="password" name="password" placeholder="Enter Your Password"><br>
+        <input type="submit" value="Sign Up"><br>
+        <h>Already have account?<h>
+        <a href="login.html">Login</a>
+      </form>
+    </div>
+  </body>
+  <style>
+    .register{
+    width: 320px;
+    height: 600px;
+    background: #292828;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+.register p{
+    margin:0;
+    padding:0;
+    font-weight: bold;
+}
+.register input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.register input[type="text"], input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+.register input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #4e4a4a;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 50px;
+}
+.register input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #fff;
+    color: #000;
+}
+.register a{
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 20px;
+    color: darkgray;
+}
+.register a:hover{
+    color: #fff;
+}
+  </style>
+</html>

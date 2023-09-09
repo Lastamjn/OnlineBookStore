@@ -1,0 +1,139 @@
+<body>
+    <header>
+        <a href="home.html" class="logo"><img src="logo.png" width="70px"></a>
+        <form class="search">
+            <input class="form-control me-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+        
+        <input type="checkbox" id="menu-bar">
+        <label for="menu-bar"><img src="menu.png" width="30px" height="30px"></label>
+
+        <nav class="navbar" navbar-expand-lg>
+            <ul>
+                <li><a>Categories</a>
+                    <ul>
+                        <li><a href="earrings">Earrings</a></li>
+                        <li><a href="rings">Rings</a></li>
+                        <li><a href="braclet">Braclet</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="login.html">Sign Up</a></li>
+                <li><a href="cart"><img src="cart.png" width="30px" height="30px"></a></li>
+                
+            </ul>
+            
+        </nav>       
+    </header>     
+</body>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+body{
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #cf9393;
+    box-shadow: 0 5px 10px #000;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+header .logo{
+    font-weight: bolder;
+    font-size: 25px;
+    color: #333;
+}
+header .navbar ul{
+    display: inline-block;
+    list-style-type: none;
+}
+header .navbar ul li{
+    position: relative;
+    float: left;
+}
+header .search{
+    display: flex;
+    align-items: center;
+}
+header .navbar ul li a{
+    font-size: 20px;
+    padding: 20px;
+    color: #000;
+    display: block;
+    text-decoration: none;
+}
+header .navbar ul li a:hover{
+    color: #fff;
+}
+header .navbar ul li a:hover img{
+    transform: scale(1.2);
+}
+header .navbar ul li ul{
+    position: absolute;
+    left: 0;
+    width: 150px;
+    background: #cf9393;
+    display: none;
+}
+header .navbar ul li:Focus-within > ul,
+header .navbar ul li:hover > ul{
+    display: initial;
+}
+#menu-bar{
+    display: none;
+}
+header label{
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    display: none;
+}
+
+
+@media(max-width:991px){
+    header{
+        padding: 20px;
+    }
+    header label{
+        display: initial;
+    }
+    header .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #cf9393;
+        border-top: 1px solid #000;
+        display: none;
+    }
+    header .navbar ul li{
+        width: 100%;
+    }
+    header .navbar ul li ul{
+        position: relative;
+        width: 100%;
+    }
+    header .navbar ul li ul li{
+        background: #caa0a0;
+    }
+    #menu-bar:checked ~ .navbar{
+        display: initial;
+    }
+}
+</style>
